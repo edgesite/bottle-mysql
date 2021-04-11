@@ -31,7 +31,7 @@ Usage Example::
 '''
 
 __author__ = "Michael Lustfield"
-__version__ = '0.3.1'
+__version__ = '0.4.1'
 __license__ = 'MIT'
 
 ### CUT HERE (see setup.py)
@@ -163,7 +163,7 @@ class MySQLPlugin(object):
                 rv = callback(*args, **kwargs)
                 if autocommit:
                     con.commit()
-            except pymysql.IntegrityError as e:
+            except MySQLdb.IntegrityError as e:
                 con.rollback()
                 raise bottle.HTTPError(500, "Database Error", e)
             except bottle.HTTPError:

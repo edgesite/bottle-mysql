@@ -33,7 +33,7 @@ Usage
 -----
 
 Once installed to an application, the plugin passes an open 
-:class:`MySQLdb.connect().cursor()` instance to all routes that requires an ``db`` keyword 
+:class:`pymysql.connect().cursor()` instance to all routes that requires an ``db`` keyword 
 argument:
 
     import bottle
@@ -76,7 +76,7 @@ The following configuration options exist for the plugin class:
 * **dictrows**: Whether or not to support dict-like access to row objects (default: True).
 * **charset**: Database connection charset (default: 'utf8')
 * **timezone**: Database connection time zone (default: None).
-* **conv**: Database output conversion using MySQLdb.converters.
+* **conv**: Database output conversion using pymysql.converters.
 
 You can override each of these values on a per-route basis: 
 
