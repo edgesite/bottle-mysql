@@ -37,8 +37,8 @@ __license__ = 'MIT'
 ### CUT HERE (see setup.py)
 
 import inspect
-import MySQLdb
-import MySQLdb.cursors as cursors
+import pymysql
+import pymysql.cursors as cursors
 import bottle
 
 
@@ -147,7 +147,7 @@ class MySQLPlugin(object):
                     kw['host'] = dbhost
                     kw['port'] = dbport
 
-                con = MySQLdb.connect(**kw)
+                con = pymysql.connect(**kw)
 
                 cur = con.cursor()
                 if timezone:
@@ -163,7 +163,7 @@ class MySQLPlugin(object):
                 rv = callback(*args, **kwargs)
                 if autocommit:
                     con.commit()
-            except MySQLdb.IntegrityError as e:
+            except pymysql.IntegrityError as e:
                 con.rollback()
                 raise bottle.HTTPError(500, "Database Error", e)
             except bottle.HTTPError:

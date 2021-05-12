@@ -2,7 +2,7 @@ import unittest
 
 import bottle
 import bottle_mysql
-import MySQLdb
+import pymysql
 
 from _mysql_exceptions import OperationalError
 
@@ -17,7 +17,7 @@ class BottleMySQLTest(unittest.TestCase):
     # copy from https://github.com/bottlepy/bottle-sqlite
     def test_with_keyword(self):
         def test(db):
-            self.assertTrue(isinstance(db, MySQLdb.cursors.BaseCursor))
+            self.assertTrue(isinstance(db, pymysql.cursors.BaseCursor))
 
         self._run(test)
 
